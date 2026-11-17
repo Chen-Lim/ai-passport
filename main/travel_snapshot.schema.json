@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:ai-passport:travel-snapshot:v1",
-  "title": "Travel Pocket itinerary snapshot v1",
+  "title": "eTicket itinerary snapshot v1",
   "description": "Full replacement snapshot for the current UTC+8 ticket interface. Run repository semantic validation after JSON Schema validation.",
   "type": "object",
   "additionalProperties": false,
@@ -74,7 +74,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 4,
-      "pattern": "^[A-Za-z0-9上下不东为乘以位信先准出分切划到加卡发取口可同回在场字定实对尚就州已座延待态息情拟持按换据接支数文新无时暂更期未机杭核桥检模正步海消添火片状用登知确票程站等绪虹行袋计详误请距车达过返连钟键长间际非预飞]+$",
+      "pattern": "^[A-Za-z0-9上下不东乘位信先出切划到加卡发取口可同回在字定实尚就州已座延待态息情拟持按换据接支数文新无时暂更期未机杭桥检模正步海消添火片状用登知确票程等绪虹行计详误请车达过返连键长间际预飞]+$",
       "allOf": [
         {
           "not": {

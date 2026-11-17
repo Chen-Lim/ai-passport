@@ -2,7 +2,6 @@
 
 #include "bsp_pins.h"
 #include "lvgl.h"
-#include <inttypes.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -18,7 +17,6 @@ LV_FONT_DECLARE(travel_font_18);
 static lv_obj_t *s_screen;
 static lv_obj_t *s_card;
 static lv_obj_t *s_battery;
-static lv_obj_t *s_source;
 static lv_obj_t *s_heading;
 static lv_obj_t *s_service;
 static lv_obj_t *s_route;
@@ -95,30 +93,29 @@ bool travel_ui_create(void)
     s_screen = lv_obj_create(NULL);
     lv_obj_set_style_bg_color(s_screen, lv_color_hex(BACKGROUND), 0);
     lv_obj_remove_flag(s_screen, LV_OBJ_FLAG_SCROLLABLE);
-    lv_obj_t *title = label(s_screen, 24, 12, 115, &travel_font_18, PAPER);
-    text(title, "出行口袋");
+    lv_obj_t *title = label(s_screen, 24, 11, 115, &lv_font_montserrat_20, PAPER);
+    text(title, "eTicket");
     s_battery = label(s_screen, BSP_LCD_W - 77, 14, 52, &lv_font_montserrat_14, PAPER);
     lv_obj_set_style_text_align(s_battery, LV_TEXT_ALIGN_RIGHT, 0);
-    s_source = label(s_screen, 24, 35, BSP_LCD_W - 48, &travel_font_18, 0xDFAC71);
 
     s_card = lv_obj_create(s_screen);
-    lv_obj_set_pos(s_card, 12, 61);
-    lv_obj_set_size(s_card, BSP_LCD_W - 24, 207);
+    lv_obj_set_pos(s_card, 12, 46);
+    lv_obj_set_size(s_card, BSP_LCD_W - 24, 218);
     lv_obj_set_style_bg_color(s_card, lv_color_hex(PAPER), 0);
     lv_obj_set_style_radius(s_card, 12, 0);
     lv_obj_set_style_border_width(s_card, 0, 0);
     lv_obj_set_style_pad_all(s_card, 0, 0);
     lv_obj_remove_flag(s_card, LV_OBJ_FLAG_SCROLLABLE);
-    s_heading = label(s_card, 12, 9, 192, &travel_font_18, TEAL);
-    s_service = label(s_card, 12, 33, 192, &lv_font_montserrat_32, INK);
-    s_route = label(s_card, 12, 76, 192, &travel_font_18, INK);
-    s_status = label(s_card, 12, 102, 192, &travel_font_18, TEAL);
-    s_time_caption = label(s_card, 12, 128, 95, &travel_font_18, MUTED);
-    s_time = label(s_card, 114, 129, 91, &lv_font_montserrat_20, INK);
+    s_heading = label(s_card, 12, 13, 192, &travel_font_18, TEAL);
+    s_service = label(s_card, 12, 37, 192, &lv_font_montserrat_32, INK);
+    s_route = label(s_card, 12, 80, 192, &travel_font_18, INK);
+    s_status = label(s_card, 12, 106, 192, &travel_font_18, TEAL);
+    s_time_caption = label(s_card, 12, 132, 95, &travel_font_18, MUTED);
+    s_time = label(s_card, 114, 133, 91, &lv_font_montserrat_20, INK);
     lv_obj_set_style_text_align(s_time, LV_TEXT_ALIGN_RIGHT, 0);
-    s_gate = label(s_card, 12, 155, 192, &travel_font_18, INK);
-    s_bottom = label(s_card, 12, 181, 192, &travel_font_18, MUTED);
-    s_detail = label(s_card, 12, 76, 192, &travel_font_18, INK);
+    s_gate = label(s_card, 12, 159, 192, &travel_font_18, INK);
+    s_bottom = label(s_card, 12, 185, 192, &travel_font_18, INK);
+    s_detail = label(s_card, 12, 80, 192, &travel_font_18, INK);
     lv_obj_add_flag(s_detail, LV_OBJ_FLAG_HIDDEN);
     s_update = label(s_screen, 24, 273, BSP_LCD_W - 48, &travel_font_18, 0xB0B9C1);
     s_hint = label(s_screen, 24, BSP_LCD_H - 25, BSP_LCD_W - 48, &travel_font_18, PAPER);
@@ -134,7 +131,6 @@ void travel_ui_update(const travel_state_t *state, int64_t now, int battery_soc,
     snprintf(buffer, sizeof(buffer), battery_soc < 0 ? "--%%" : "%d%%", battery_soc);
     text(s_battery, buffer);
     bool demo = state->has_snapshot && state->snapshot.source == TRAVEL_SOURCE_DEMO;
-    text(s_source, demo ? "模拟数据 / 非实时" : "行程数据 / 待核对");
     travel_freshness_t freshness = travel_state_freshness(state, now);
     if (!state->has_snapshot || !state->snapshot.count) {
         text(s_heading, "行程卡片");
@@ -144,6 +140,7 @@ void travel_ui_update(const travel_state_t *state, int64_t now, int battery_soc,
         text(s_time_caption, "出发时间");
         text(s_time, "--:--");
         text(s_gate, "请先添加行程");
+        lv_obj_set_style_text_color(s_bottom, lv_color_hex(MUTED), 0);
         text(s_bottom, "数据未就绪");
     } else {
         const travel_trip_t *trip = &state->snapshot.trips[state->selected];
@@ -171,12 +168,8 @@ void travel_ui_update(const travel_state_t *state, int64_t now, int battery_soc,
         snprintf(buffer, sizeof(buffer), "%s %s", trip->kind == TRAVEL_TRAIN ? "检票口" : "登机口",
                  trip->gate[0] ? trip->gate : "暂无信息");
         text(s_gate, buffer);
-        int64_t minutes;
-        if (freshness == TRAVEL_FRESH && travel_minutes_until(trip, now, &minutes)) {
-            snprintf(buffer, sizeof(buffer), "距出发 %" PRId64 " 分钟", minutes);
-        } else {
-            snprintf(buffer, sizeof(buffer), "%s", freshness == TRAVEL_STALE ? "请更新行程状态" : "以车站机场信息为准");
-        }
+        lv_obj_set_style_text_color(s_bottom, lv_color_hex(INK), 0);
+        snprintf(buffer, sizeof(buffer), "座位 %s", trip->seat[0] ? trip->seat : "暂无信息");
         text(s_bottom, buffer);
         snprintf(buffer, sizeof(buffer), "%s UTC+8\n计划 %s\n预计 %s\n实际 %s\n到达 %s\n座位 %s",
                  date, planned, estimated, actual, arrival, trip->seat[0] ? trip->seat : "暂无信息");

@@ -31,7 +31,7 @@ static void on_key(bsp_btn_t button, bsp_btn_ev_t event, void *user)
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Travel Pocket: loaded static train itinerary G7687");
+    ESP_LOGI(TAG, "eTicket: loaded static train itinerary G7687");
 #if CONFIG_PM_ENABLE
     const esp_pm_config_t power = {
         .max_freq_mhz = 160, .min_freq_mhz = 40, .light_sleep_enable = true,
