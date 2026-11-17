@@ -1,0 +1,16 @@
+{
+  "railwayOperator": "cr",
+  "trainNo": "G7687",
+  "departureStation": "上海虹桥",
+  "departureRegionCode": "CN",
+  "arrivalStation": "杭州东",
+  "arrivalRegionCode": "CN",
+  "departureTime": "2026-11-18 07:25",
+  "departureTimeZone": "Asia/Shanghai",
+  "arrivalTime": "2026-11-18 08:24",
+  "arrivalTimeZone": "Asia/Shanghai",
+  "seatType": "二等座",
+  "carNo": "05",
+  "seatNo": "07D",
+  "ticketGate": "19B"
+}

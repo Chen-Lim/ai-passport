@@ -1,0 +1,20 @@
+{
+  "railwayOperator": "cr",
+  "trainNo": "G108",
+  "departureStation": "上海虹桥",
+  "departureRegionCode": "CN",
+  "arrivalStation": "杭州东",
+  "arrivalRegionCode": "CN",
+  "departureTime": "2026-11-17 09:15",
+  "departureTimeZone": "Asia/Shanghai",
+  "arrivalTime": "2026-11-17 14:00",
+  "arrivalTimeZone": "Asia/Shanghai",
+  "seatType": "二等座",
+  "carNo": "08",
+  "seatNo": "06A",
+  "ticketGate": "A12",
+  "priceCurrency": "CNY",
+  "priceValue": 128.5,
+  "propulsionType": "emu",
+  "trainsetNumbers": "CR400BF-S-3222;CR400BF-S-3223"
+}

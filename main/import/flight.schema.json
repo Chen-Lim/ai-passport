@@ -1,0 +1,676 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-passport:ticket-import:flight:v1",
+  "title": "Travel Pocket flight ticket import v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "flightNo",
+    "departureTime",
+    "arrivalTime"
+  ],
+  "properties": {
+    "airlineIata": {
+      "description": "航司IATA代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{2}$"
+        }
+      ]
+    },
+    "airlineIcao": {
+      "description": "航司ICAO代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      ]
+    },
+    "flightNo": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "航班号"
+    },
+    "operatingAirlineIata": {
+      "description": "代码共享航班实际承运航司",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{2}$"
+        }
+      ]
+    },
+    "operatingFlightNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "代码共享航班实际承运航班号"
+    },
+    "departureIata": {
+      "description": "出发机场IATA代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      ]
+    },
+    "departureIcao": {
+      "description": "出发机场ICAO代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{4}$"
+        }
+      ]
+    },
+    "departureTerminal": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "出发航站楼"
+    },
+    "arrivalIata": {
+      "description": "到达机场IATA代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      ]
+    },
+    "arrivalIcao": {
+      "description": "到达机场ICAO",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{4}$"
+        }
+      ]
+    },
+    "arrivalTerminal": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "到达航站楼"
+    },
+    "stopoverAirports": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "经停机场IATA/ICAO",
+      "pattern": "^(?:[A-Z0-9]{3,4}(?:;[A-Z0-9]{3,4})*)?$"
+    },
+    "departureTime": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$",
+      "description": "出发时间"
+    },
+    "arrivalTime": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$",
+      "description": "到达时间"
+    },
+    "actualDepartureTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "实际出发时间",
+      "pattern": "^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2})?$"
+    },
+    "actualArrivalTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "实际到达时间",
+      "pattern": "^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2})?$"
+    },
+    "boardingTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "登机时间",
+      "pattern": "^(?:[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2})?$"
+    },
+    "departureGate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "出发登机口"
+    },
+    "boardingGroup": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "登机组"
+    },
+    "sequenceNo": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "值机序号"
+    },
+    "bookingClassCode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "舱位代码"
+    },
+    "cabinClass": {
+      "description": "舱等",
+      "enum": [
+        null,
+        "",
+        "economy",
+        "premiumEconomy",
+        "business",
+        "first",
+        "privateCabin"
+      ]
+    },
+    "seatNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "座位号"
+    },
+    "seatPosition": {
+      "description": "座位位置",
+      "enum": [
+        null,
+        "",
+        "window",
+        "aisle",
+        "middle",
+        "unknown"
+      ]
+    },
+    "passengerName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "乘客姓名"
+    },
+    "pnr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "订座编号"
+    },
+    "eTicketNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "电子票号"
+    },
+    "couponNo": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "航段"
+    },
+    "bookingSource": {
+      "description": "购票渠道",
+      "enum": [
+        null,
+        "",
+        "airline",
+        "tripCom",
+        "ctrip",
+        "qunar",
+        "fliggy",
+        "tongcheng",
+        "meituan",
+        "umetrip",
+        "expedia",
+        "booking",
+        "kayak",
+        "priceline",
+        "hopper",
+        "googleFlights",
+        "skyscanner",
+        "corporateTravel",
+        "custom"
+      ]
+    },
+    "customBookingSource": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "自定义购票渠道"
+    },
+    "priceCashCurrency": {
+      "description": "货币代码",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      ]
+    },
+    "priceCashAmount": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": 0,
+      "description": "支付金额"
+    },
+    "redeemedPoints": {
+      "type": [
+        "integer",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[0-9]+)?$",
+      "minimum": 0,
+      "description": "使用积分"
+    },
+    "redeemedPointsProgram": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "使用积分项目"
+    },
+    "earnedPoints": {
+      "type": [
+        "integer",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[0-9]+)?$",
+      "minimum": 0,
+      "description": "获得积分"
+    },
+    "earnedPointsProgram": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "获得积分项目"
+    },
+    "distance": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": 0,
+      "description": "里程（km）"
+    },
+    "aircraftTypeIcao": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "机型ICAO代码"
+    },
+    "aircraftTypeName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "机型名"
+    },
+    "aircraftRegistration": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "机身编号"
+    },
+    "barcode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "二维码"
+    },
+    "barcodeFormat": {
+      "description": "二维码格式",
+      "enum": [
+        null,
+        "",
+        "qr",
+        "pdf417",
+        "aztec",
+        "code128",
+        "dynamicUrl"
+      ],
+      "default": "qr"
+    },
+    "serviceStatus": {
+      "description": "服务状态",
+      "enum": [
+        null,
+        "",
+        "normal",
+        "cancelled",
+        "returned",
+        "diverted"
+      ],
+      "default": "normal"
+    },
+    "changeFlag": {
+      "description": "退改标识",
+      "enum": [
+        null,
+        "",
+        "voided",
+        "origChanged",
+        "origRefunded",
+        "noShow"
+      ],
+      "default": ""
+    },
+    "reimburseStatus": {
+      "description": "报销标识",
+      "enum": [
+        null,
+        "",
+        "no",
+        "yes"
+      ],
+      "default": "no"
+    },
+    "remark": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "备注"
+    },
+    "airlineId": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "description": "Optional opaque exported ID mentioned in the field notes; retain its original representation."
+    },
+    "operatingAirlineId": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "description": "Optional opaque exported ID mentioned in the field notes; retain its original representation."
+    },
+    "departureAirportId": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "description": "Optional opaque exported ID mentioned in the field notes; retain its original representation."
+    },
+    "arrivalAirportId": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "description": "Optional opaque exported ID mentioned in the field notes; retain its original representation."
+    },
+    "aircraftTypeId": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "description": "Optional opaque exported ID mentioned in the field notes; retain its original representation."
+    },
+    "stopoverAirportIds": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-source-document": {
+    "url": "https://thedafeige.feishu.cn/wiki/FZd6wOGRniIWytkDoh9cfy2gnmg",
+    "revision": 1090,
+    "section": "2. 字段说明"
+  },
+  "x-source-fields": [
+    "airlineIata",
+    "airlineIcao",
+    "flightNo",
+    "operatingAirlineIata",
+    "operatingFlightNo",
+    "departureIata",
+    "departureIcao",
+    "departureTerminal",
+    "arrivalIata",
+    "arrivalIcao",
+    "arrivalTerminal",
+    "stopoverAirports",
+    "departureTime",
+    "arrivalTime",
+    "actualDepartureTime",
+    "actualArrivalTime",
+    "boardingTime",
+    "departureGate",
+    "boardingGroup",
+    "sequenceNo",
+    "bookingClassCode",
+    "cabinClass",
+    "seatNo",
+    "seatPosition",
+    "passengerName",
+    "pnr",
+    "eTicketNo",
+    "couponNo",
+    "bookingSource",
+    "customBookingSource",
+    "priceCashCurrency",
+    "priceCashAmount",
+    "redeemedPoints",
+    "redeemedPointsProgram",
+    "earnedPoints",
+    "earnedPointsProgram",
+    "distance",
+    "aircraftTypeIcao",
+    "aircraftTypeName",
+    "aircraftRegistration",
+    "barcode",
+    "barcodeFormat",
+    "serviceStatus",
+    "changeFlag",
+    "reimburseStatus",
+    "remark"
+  ],
+  "x-required-allow-empty": [],
+  "x-match-priority": {
+    "airline": [
+      "airlineId",
+      "airlineIcao",
+      "airlineIata"
+    ],
+    "operatingAirline": [
+      "operatingAirlineId",
+      "operatingAirlineIata"
+    ],
+    "departureAirport": [
+      "departureAirportId",
+      "departureIcao",
+      "departureIata"
+    ],
+    "arrivalAirport": [
+      "arrivalAirportId",
+      "arrivalIcao",
+      "arrivalIata"
+    ],
+    "stopoverAirports": [
+      "stopoverAirportIds",
+      "stopoverAirports"
+    ],
+    "aircraftType": [
+      "aircraftTypeId",
+      "aircraftTypeIcao",
+      "aircraftTypeName"
+    ]
+  },
+  "x-max-record-utf8-bytes": 65536,
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": [
+            "airlineIata"
+          ],
+          "properties": {
+            "airlineIata": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "required": [
+            "airlineIcao"
+          ],
+          "properties": {
+            "airlineIcao": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ],
+      "title": "Provide a nonempty airlineIata or airlineIcao"
+    },
+    {
+      "anyOf": [
+        {
+          "required": [
+            "departureIata"
+          ],
+          "properties": {
+            "departureIata": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "required": [
+            "departureIcao"
+          ],
+          "properties": {
+            "departureIcao": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ],
+      "title": "Provide a nonempty departureIata or departureIcao"
+    },
+    {
+      "anyOf": [
+        {
+          "required": [
+            "arrivalIata"
+          ],
+          "properties": {
+            "arrivalIata": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "required": [
+            "arrivalIcao"
+          ],
+          "properties": {
+            "arrivalIcao": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ],
+      "title": "Provide a nonempty arrivalIata or arrivalIcao"
+    }
+  ]
+}

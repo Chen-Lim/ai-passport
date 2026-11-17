@@ -1,0 +1,19 @@
+{
+  "airlineIata": "CA",
+  "airlineIcao": "CCA",
+  "flightNo": "CA790",
+  "departureIata": "PEK",
+  "departureIcao": "ZBAA",
+  "arrivalIata": "PVG",
+  "arrivalIcao": "ZSPD",
+  "departureTime": "2026-09-22T13:10",
+  "arrivalTime": "2026-09-22T15:20",
+  "departureGate": "C20",
+  "seatNo": "20C",
+  "cabinClass": "economy",
+  "serviceStatus": "normal",
+  "bookingSource": "umetrip",
+  "priceCashCurrency": "CNY",
+  "priceCashAmount": 650.5,
+  "stopoverAirports": "NKG;CSX"
+}

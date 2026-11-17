@@ -1,0 +1,465 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-passport:ticket-import:train:v1",
+  "title": "Travel Pocket train ticket import v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "departureStation",
+    "departureRegionCode",
+    "arrivalStation",
+    "arrivalRegionCode",
+    "departureTime",
+    "departureTimeZone",
+    "arrivalTimeZone",
+    "seatType",
+    "railwayOperator",
+    "trainNo",
+    "arrivalTime",
+    "carNo",
+    "seatNo"
+  ],
+  "properties": {
+    "railwayOperator": {
+      "description": "铁路运营商",
+      "enum": [
+        null,
+        "",
+        "cr",
+        "gdic",
+        "shsr",
+        "cn_bcr",
+        "hkmtr",
+        "tr",
+        "thsrc",
+        "afr",
+        "jr",
+        "jr_shinkansen",
+        "jp_tobu",
+        "jp_seibu",
+        "jp_keisei",
+        "jp_keio",
+        "jp_odakyu",
+        "jp_tokyu",
+        "jp_keikyu",
+        "jp_sotetsu",
+        "jp_meitetsu",
+        "jp_kintetsu",
+        "jp_nankai",
+        "jp_keihan",
+        "jp_hankyu",
+        "jp_hanshin",
+        "jp_nishitetsu",
+        "jp_custom",
+        "kr_korail",
+        "kr_sr",
+        "kr_arex",
+        "sa_sar",
+        "us_amtrak",
+        "ca_viarail",
+        "europe_eurostar",
+        "europe_flixtrain",
+        "de_db",
+        "fr_sncf",
+        "fr_ouigo",
+        "es_renfe",
+        "es_ouigo",
+        "es_iryo",
+        "it_trenitalia",
+        "it_italo",
+        "ie_irishrail",
+        "gb_avanti",
+        "gb_c2c",
+        "gb_caledonian",
+        "gb_chiltern",
+        "gb_crosscountry",
+        "gb_emr",
+        "gb_elizabeth",
+        "gb_gatwick",
+        "gb_grandcentral",
+        "gb_greatnorthern",
+        "gb_gwr",
+        "gb_anglia",
+        "gb_heathrow",
+        "gb_hull",
+        "gb_lner",
+        "gb_lnr",
+        "gb_overground",
+        "gb_lumo",
+        "gb_merseyrail",
+        "gb_northern",
+        "gb_scotrail",
+        "gb_swr",
+        "gb_southeastern",
+        "gb_southern",
+        "gb_stansted",
+        "gb_thameslink",
+        "gb_tpe",
+        "gb_tfw",
+        "gb_wmr",
+        "gb_nir",
+        "gb_custom",
+        "custom"
+      ]
+    },
+    "customRailwayOperator": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "自定义铁路运营商"
+    },
+    "trainName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "列车名称，通常与车次一起出现"
+    },
+    "trainNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "列车车次"
+    },
+    "departureStation": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "出发站"
+    },
+    "departureRegionCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "出发地国家/地区码"
+    },
+    "departureStationLng": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "出发站经度"
+    },
+    "departureStationLat": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "出发站纬度"
+    },
+    "arrivalStation": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "到达站"
+    },
+    "arrivalRegionCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "到达地国家/地区码"
+    },
+    "arrivalStationLng": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "到达站经度"
+    },
+    "arrivalStationLat": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "到达站纬度"
+    },
+    "distance": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": 0,
+      "description": "里程（km）"
+    },
+    "departureTime": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}$",
+      "description": "计划发车时间（当地时间）"
+    },
+    "departureTimeZone": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?:[A-Za-z0-9_+.-]+(?:/[A-Za-z0-9_+.-]+)+|UTC)$",
+      "description": "发车地时区"
+    },
+    "arrivalTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "计划到达时间（当地时间）",
+      "pattern": "^(?:[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2})?$"
+    },
+    "arrivalTimeZone": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?:[A-Za-z0-9_+.-]+(?:/[A-Za-z0-9_+.-]+)+|UTC)$",
+      "description": "到达地时区"
+    },
+    "seatType": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "席别"
+    },
+    "carNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "车厢号"
+    },
+    "seatNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "座位号"
+    },
+    "priceCurrency": {
+      "description": "票价货币类型",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      ]
+    },
+    "priceValue": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ],
+      "pattern": "^(?:[+-]?[0-9]+(?:\\.[0-9]+)?)?$",
+      "minimum": 0,
+      "description": "票价"
+    },
+    "passengerType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "乘客类型"
+    },
+    "passengerName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "乘客姓名"
+    },
+    "waitingRoom": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "候车室"
+    },
+    "ticketGate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "检票口"
+    },
+    "orderNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "订单号"
+    },
+    "ticketNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "票号"
+    },
+    "remark": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "备注"
+    },
+    "propulsionType": {
+      "description": "驱动方式",
+      "enum": [
+        null,
+        "",
+        "unknown",
+        "emu",
+        "dmu",
+        "bmu",
+        "hdmu",
+        "bemu",
+        "eLoco",
+        "dLoco",
+        "sLoco"
+      ],
+      "default": "unknown"
+    },
+    "trainModel": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "列车型号/机车型号"
+    },
+    "trainsetNumbers": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "列车编号/机车编号",
+      "pattern": "^(?:[^;,；]+(?:;[^;,；]+)*)?$"
+    },
+    "vehicleModel": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "车厢型号"
+    },
+    "vehicleNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "车厢编号"
+    },
+    "qrCodeFormat": {
+      "description": "二维码/条形码格式",
+      "enum": [
+        null,
+        "",
+        "qr",
+        "pdf417",
+        "aztec",
+        "code128",
+        "dynamicUrl"
+      ],
+      "default": "qr"
+    },
+    "qrCode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "二维码/条形码字符串"
+    },
+    "changeFlag": {
+      "description": "退改标记",
+      "enum": [
+        null,
+        "",
+        "afterChanging",
+        "afterChangingStation",
+        "changed",
+        "changedStation",
+        "refunded"
+      ],
+      "default": ""
+    },
+    "reimburseStatus": {
+      "description": "报销状态",
+      "enum": [
+        null,
+        "",
+        "yes"
+      ],
+      "default": ""
+    }
+  },
+  "x-source-document": {
+    "url": "https://thedafeige.feishu.cn/wiki/Xr1Gwz6g7iDCIKk10w5cGDrTnVd",
+    "revision": 1668,
+    "section": "2. 字段说明"
+  },
+  "x-source-fields": [
+    "railwayOperator",
+    "customRailwayOperator",
+    "trainName",
+    "trainNo",
+    "departureStation",
+    "departureRegionCode",
+    "departureStationLng",
+    "departureStationLat",
+    "arrivalStation",
+    "arrivalRegionCode",
+    "arrivalStationLng",
+    "arrivalStationLat",
+    "distance",
+    "departureTime",
+    "departureTimeZone",
+    "arrivalTime",
+    "arrivalTimeZone",
+    "seatType",
+    "carNo",
+    "seatNo",
+    "priceCurrency",
+    "priceValue",
+    "passengerType",
+    "passengerName",
+    "waitingRoom",
+    "ticketGate",
+    "orderNo",
+    "ticketNo",
+    "remark",
+    "propulsionType",
+    "trainModel",
+    "trainsetNumbers",
+    "vehicleModel",
+    "vehicleNumber",
+    "qrCodeFormat",
+    "qrCode",
+    "changeFlag",
+    "reimburseStatus"
+  ],
+  "x-required-allow-empty": [
+    "railwayOperator",
+    "trainNo",
+    "arrivalTime",
+    "carNo",
+    "seatNo"
+  ],
+  "x-match-priority": {},
+  "x-max-record-utf8-bytes": 65536
+}
