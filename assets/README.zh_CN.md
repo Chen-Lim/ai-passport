@@ -15,6 +15,39 @@
 - 添加字库前评估 Flash 与内部 RAM 影响；ESP32-C3 无 PSRAM。
 - 不提交许可不允许分发的字库。
 
+### 出行口袋字库
+
+[`fonts/NotoSansSC-TravelSubset.ttf`](fonts/NotoSansSC-TravelSubset.ttf) 是
+[Google Fonts Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc)
+的应用子集，遵循 [SIL OFL 1.1](fonts/OFL.txt)。上游可变字体下载日期为
+2026-11-17，原始文件 SHA-256：
+`a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da`。
+使用 fontTools 4.60.1 固定字重为 500，根据 `tools/generate_travel_font.py` 的
+`required_codepoints()` 收集的可打印 ASCII 和应用字符裁剪 Unicode cmap。
+不保留完整上游文件。子集为 41,196 字节；添加子集外的字符时，需要先获取
+匹配的上游字体并重建源字体子集。
+
+[`fonts/travel_characters.txt`](fonts/travel_characters.txt) 保存准确的可打印字符清单。
+[`fonts/travel_font_18.c`](fonts/travel_font_18.c) 是由 lv_font_conv 1.5.3 生成的
+18 px、4 bpp、无压缩、无字偶距 LVGL 位图字库，由 `main/CMakeLists.txt` 编译。
+中文控件显式选择该字库，运行时检查控件实际选中的字体；未知字符显示明确的
+“文字不支持”提示。ASCII 车次／航班号使用 Montserrat 32，时间使用 Montserrat 20。
+
+使用已安装的固定版本转换器重新生成：
+
+```bash
+python3 tools/generate_travel_font.py --converter /path/to/lv_font_conv
+python3 tests/test_travel_font.py
+```
+
+如需同时重建 TTF 子集，在本地 Python 环境安装 fontTools 4.60.1，并向生成命令
+增加 `--source-font /path/to/original/NotoSansSC-Variable.ttf`。
+脚本会验证源字体 SHA-256 和工具版本。
+
+脚本固定使用 `--size 18 --bpp 4 --format lvgl --no-compress --no-kerning
+--lv-font-name travel_font_18 --lv-include lvgl.h`，通过 `--symbols` 传入记录的字符清单。
+测试检查该字库实际的 cmap、缺字反例、位图边界及非空字形。真机渲染需要单独验收。
+
 ## 图片（images）
 
 可复用的源图与生成的显示资产放在 `images/`。
