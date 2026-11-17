@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "timezone": "Asia/Shanghai",
+  "source": "demo",
+  "revision": 1,
+  "updated_at": 1794873600,
+  "expires_at": 1794873900,
+  "trips": [
+    {
+      "id": "20261118-G7687-SHA-HGH",
+      "kind": "train",
+      "service": "G7687",
+      "origin": "上海虹桥",
+      "destination": "杭州东",
+      "status": "scheduled",
+      "planned_departure": 1794957900,
+      "estimated_departure": null,
+      "actual_departure": null,
+      "planned_arrival": 1794961440,
+      "gate": "19B",
+      "seat": "05车 07D"
+    },
+    {
+      "id": "20261117-MU5101-PVG-PEK",
+      "kind": "flight",
+      "service": "MU5101",
+      "origin": "PVG",
+      "destination": "PEK",
+      "status": "delayed",
+      "planned_departure": 1794880800,
+      "estimated_departure": 1794882900,
+      "actual_departure": null,
+      "planned_arrival": 1794888000,
+      "gate": null,
+      "seat": "12A"
+    }
+  ]
+}

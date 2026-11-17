@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "timezone": "Asia/Shanghai",
+  "source": "live",
+  "revision": 1,
+  "updated_at": 1794915600,
+  "expires_at": 1794957900,
+  "trips": [
+    {
+      "id": "20261118-G7687-SHA-HGH",
+      "kind": "train",
+      "service": "G7687",
+      "origin": "上海虹桥",
+      "destination": "杭州东",
+      "status": "scheduled",
+      "planned_departure": 1794957900,
+      "planned_arrival": 1794961440,
+      "estimated_departure": null,
+      "actual_departure": null,
+      "gate": "19B",
+      "seat": "05车 07D"
+    }
+  ]
+}
