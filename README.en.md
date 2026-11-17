@@ -1,29 +1,26 @@
 [简体中文](README.md) · English
 
-# Travel Pocket
+# eTicket
 
 A Chinese train and flight itinerary card application for FoloToy AI Passport.
 
-**This version is an offline interaction prototype. All tickets are simulated;
-it does not provide actual train or flight status.** Every screen labels the
-source as simulated and not live. The sample date is 2026-11-17; a simulated
-UTC+8 clock starts at 08:00 and advances with device uptime. Sample services,
+**This version is an offline interaction prototype. All tickets are static or simulated;
+it does not provide actual train or flight status.** The current firmware loads a
+sample 2026-11-18 G7687 train itinerary from Shanghai Hongqiao to Hangzhou East,
+with a synthetic UTC+8 clock advancing with device uptime. Sample services,
 gates and seats must not be used for travel.
 
 ## Screens and controls
 
-- Home: service number, route, status, planned or estimated departure, gate and countdown.
+- Home: service number, route, status, planned or estimated departure, gate and seat.
 - Details: planned, estimated and actual departure, planned arrival and seat. Times use UTC+8.
 - Short UP/DOWN: switch tickets. Short OK: open or close details.
-- Long OK in details: return home. Long OK at home: cycle normal, delayed, cancelled, offline, stale and empty scenarios.
+- Long OK in details: return home. Long OK at home: switch between the sample and empty scenarios.
 - A double click acts as one short click. There are no simultaneous-button combinations.
 - Dim after 30 idle seconds and turn off the backlight after 60. The first action while dark only wakes the screen.
 
-Stale data has no countdown. Passing a scheduled departure never fabricates an
-actual departure. The offline scenario keeps its simulated cards with an
-explicit warning. Missing fields have an unavailable label. Long OK at home
-continues scenario selection from stale or empty data. Unavailable battery
-readings appear as `--%`.
+Missing fields have an unavailable label. Long OK at home continues scenario
+selection from empty data. Unavailable battery readings appear as `--%`.
 
 ## Boundaries
 

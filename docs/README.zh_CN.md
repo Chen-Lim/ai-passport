@@ -203,7 +203,7 @@ LICENSE                  仓库许可证
 | [硬件资料](/docs/hardware-design/README.zh_CN.md) | 板卡事实、接口边界、验收清单与排障 |
 | [中文字体](/docs/development/engineering/lvgl-chinese-fonts.zh_CN.md) | 字形覆盖、控件字体选择，以及中文空白排查 |
 | [Wi-Fi 配网](/docs/development/engineering/wifi-provisioning.zh_CN.md) | 蓝牙配网实现参考与配套小程序 |
-| [出行口袋 JSON 协议](/docs/assets/travel-json.zh_CN.md) | 行程 Schema、显示约束、校验和 JSON 预览 |
+| [eTicket JSON 协议](/docs/assets/travel-json.zh_CN.md) | 行程 Schema、显示约束、校验和 JSON 预览 |
 | [票务导入协议](/docs/assets/ticket-import.zh_CN.md) | 按文档构建的机票／火车票 Schema、CSV 校验和时区转换 |
 | [社区作品与经验](/docs/reference/README.zh_CN.md) | `docs/reference/<username>/` 下的应用档案和可复用知识 |
 | [参与贡献](/docs/contribution/README.zh_CN.md) | 文档、提交与 Pull Request 约定 |

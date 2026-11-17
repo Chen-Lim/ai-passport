@@ -209,7 +209,7 @@ provide reference material. Choose the entry that matches your task.
 | [Hardware](/docs/hardware-design/README.md) | Board facts, interface boundaries, acceptance checklists, and troubleshooting |
 | [Chinese fonts](/docs/development/engineering/lvgl-chinese-fonts.md) | Glyph coverage, widget font selection, and blank-text troubleshooting |
 | [Wi-Fi provisioning](/docs/development/engineering/wifi-provisioning.md) | Bluetooth provisioning reference and companion mini program |
-| [Travel Pocket JSON contract](/docs/assets/travel-json.md) | Itinerary schema, display constraints, validation and JSON previews |
+| [eTicket JSON contract](/docs/assets/travel-json.md) | Itinerary schema, display constraints, validation and JSON previews |
 | [Ticket import contracts](/docs/assets/ticket-import.md) | Document-based flight/train schemas, CSV validation and timezone conversion |
 | [Community projects and experience](/docs/reference/README.md) | Playbooks and reusable knowledge under `docs/reference/<username>/` |
 | [Contributing](/docs/contribution/README.md) | Documentation, commits, and pull-request conventions |

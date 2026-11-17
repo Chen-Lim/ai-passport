@@ -1,6 +1,6 @@
 [简体中文](travel-json.zh_CN.md) · English
 
-# Travel Pocket JSON Contract
+# eTicket JSON Contract
 
 The authoritative [JSON Schema](../../main/travel_snapshot.schema.json) uses
 Draft 2020-12 and protocol version 1. It describes complete itinerary snapshots
@@ -17,7 +17,7 @@ Those schemas preserve full ticket records; this schema governs their compact UI
 | --- | --- | --- |
 | `schema_version` | Yes | Exactly `1` |
 | `timezone` | Yes | Exactly `Asia/Shanghai`; all labels use UTC+8 |
-| `source` | Yes | `demo` displays the simulated-source warning; `live` displays the provider-data label |
+| `source` | Yes | `demo` uses the simulated-update footer prefix; `live` uses the standard update prefix |
 | `revision` | Yes | Integer 1..4294967295, strictly increasing within a source stream |
 | `updated_at` | Yes | UTC Unix seconds when the provider updated the snapshot; shown as last update |
 | `expires_at` | Yes | UTC Unix seconds after which the snapshot is stale; must exceed `updated_at` |
@@ -53,8 +53,8 @@ The status enums map to existing localized labels:
 | `unknown` | Status unavailable |
 
 Status is supplied explicitly by the data provider. Neither a departure timestamp
-nor elapsed clock time fabricates a departure. Cancelled, departed, arrived,
-unknown and stale tickets do not have an active departure countdown.
+nor elapsed clock time fabricates a departure. Seat is displayed on the home card
+and detail view.
 
 ## Text and layout compatibility
 
@@ -95,8 +95,8 @@ of just `id` inside an object array. Apply these semantic checks as well:
 
 Do not send partial patches. A snapshot with one trip replaces the complete
 list with that trip. A stale snapshot is still structurally valid: at
-`now >= expires_at`, the UI keeps the cached card, marks it stale and removes
-the countdown. Rejected messages must retain the previous accepted snapshot.
+`now >= expires_at`, the UI keeps the cached card and marks it stale in the footer.
+Rejected messages must retain the previous accepted snapshot.
 
 Device clock validity, connectivity, selection, detail-page state and battery
 readings are local state and are not payload fields. Provider update time must

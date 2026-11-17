@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:ai-passport:ticket-import:flight:v1",
-  "title": "Travel Pocket flight ticket import v1",
+  "title": "eTicket flight ticket import v1",
   "type": "object",
   "additionalProperties": false,
   "required": [

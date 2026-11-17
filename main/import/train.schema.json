@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:ai-passport:ticket-import:train:v1",
-  "title": "Travel Pocket train ticket import v1",
+  "title": "eTicket train ticket import v1",
   "type": "object",
   "additionalProperties": false,
   "required": [

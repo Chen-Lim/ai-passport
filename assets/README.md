@@ -17,7 +17,7 @@ Store reusable font files and generated font sources in `fonts/`.
 - Check Flash and internal-RAM impact before adding a font; the ESP32-C3 has no PSRAM.
 - Do not commit fonts whose license does not permit redistribution.
 
-### Travel Pocket font
+### eTicket font
 
 [`fonts/NotoSansSC-TravelSubset.ttf`](fonts/NotoSansSC-TravelSubset.ttf) is an
 application subset of [Google Fonts Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc),
@@ -26,7 +26,7 @@ downloaded on 2026-11-17; original SHA-256:
 `a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da`.
 fontTools 4.60.1 fixes weight at 500 and subsets its Unicode cmap to the printable ASCII and application
 characters collected by `required_codepoints()` in `tools/generate_travel_font.py`.
-The full upstream file is not retained. The subset is 41,196 bytes; adding a
+The full upstream file is not retained. The subset is 38,116 bytes; adding a
 character outside it requires obtaining the matching upstream font and rebuilding
 the subset first.
 

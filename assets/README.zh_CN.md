@@ -15,7 +15,7 @@
 - 添加字库前评估 Flash 与内部 RAM 影响；ESP32-C3 无 PSRAM。
 - 不提交许可不允许分发的字库。
 
-### 出行口袋字库
+### eTicket 字库
 
 [`fonts/NotoSansSC-TravelSubset.ttf`](fonts/NotoSansSC-TravelSubset.ttf) 是
 [Google Fonts Noto Sans SC](https://github.com/google/fonts/tree/main/ofl/notosanssc)
@@ -24,7 +24,7 @@
 `a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da`。
 使用 fontTools 4.60.1 固定字重为 500，根据 `tools/generate_travel_font.py` 的
 `required_codepoints()` 收集的可打印 ASCII 和应用字符裁剪 Unicode cmap。
-不保留完整上游文件。子集为 41,196 字节；添加子集外的字符时，需要先获取
+不保留完整上游文件。子集为 38,116 字节；添加子集外的字符时，需要先获取
 匹配的上游字体并重建源字体子集。
 
 [`fonts/travel_characters.txt`](fonts/travel_characters.txt) 保存准确的可打印字符清单。
